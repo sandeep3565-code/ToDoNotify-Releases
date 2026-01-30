@@ -8,13 +8,13 @@ A lightweight GTK-based To-Do Manager with background notifications.
 
 Download the latest `.deb` package from the Releases page:
 
-👉 **[Download To-Do Notify (.deb)](
-https://github.com/sandeep3565-code/ToDoNotify-Releases/releases/latest/download/ToDoNotify_linux_amd64.deb
-)**
+👉 **Official download page (Linux):**
+🌐 https://todonotify.pages.dev
 
-File name example:
-ToDoNotify_1.0.1_linux_amd64.deb
-
+From the website you can:
+- Download the latest `.deb`
+- View all previous releases
+- Read version changelogs
 
 ---
 
