@@ -131,7 +131,6 @@
       font-size: 13.5px;
       color: var(--muted);
       display: flex;
-      justify-content: space-between;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
@@ -242,156 +241,132 @@
     </div>
 
     <div class="footer">
-      <span>Ubuntu / Debian • Binary-only</span>
-      <a href="https://github.com/sandeep3565-code/ToDoNotify-Releases/releases/latest">
+    © <span id="year"></span>S Sandeep Kumar. All rights reserved.
+    <a href="https://github.com/sandeep3565-code/ToDoNotify-Releases/releases/latest">
         Release details
-      </a>
+    </a>
     </div>
   </div>
 
   <script>
-    const OWNER = "sandeep3565-code";
-    const REPO  = "ToDoNotify-Releases";
+  const OWNER = "sandeep3565-code";
+  const REPO  = "ToDoNotify-Releases";
 
-    // ---------- THEME ----------
-    const body = document.body;
-    const toggle = document.getElementById("themeToggle");
+  // ---------- THEME ----------
+  const body = document.body;
+  const toggle = document.getElementById("themeToggle");
 
-    function applyTheme(theme) {
-      body.classList.toggle("dark", theme === "dark");
-      toggle.textContent = theme === "dark" ? "☀️" : "🌙";
-      localStorage.setItem("theme", theme);
-    }
+  function applyTheme(theme) {
+    body.classList.toggle("dark", theme === "dark");
+    toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("theme", theme);
+  }
 
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
 
-    toggle.onclick = () =>
-      applyTheme(body.classList.contains("dark") ? "light" : "dark");
+  toggle.onclick = () =>
+    applyTheme(body.classList.contains("dark") ? "light" : "dark");
 
-    // ---------- GITHUB DATA ----------
-    const versionSelect = document.getElementById("versionSelect");
-    const versionBadge  = document.getElementById("version");
+  // ---------- GITHUB DATA ----------
+  const versionSelect = document.getElementById("versionSelect");
+  const versionBadge  = document.getElementById("version");
+  const downloadBtn   = document.querySelector(".download");
+  const changelogBox  = document.getElementById("changelog");
 
-    async function loadReleases() {
+  async function loadReleases() {
     const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/releases`
+      `https://api.github.com/repos/${OWNER}/${REPO}/releases`
     );
-    if (!res.ok) throw new Error();
+    if (!res.ok) return;
 
     const releases = await res.json();
 
-    // Populate dropdown
+    // Populate version dropdown
     releases.forEach((rel, i) => {
-        if (rel.draft || rel.prerelease) return;
+      if (rel.draft || rel.prerelease) return;
 
-        const opt = document.createElement("option");
-        opt.value = rel.tag_name;
-        opt.textContent = rel.tag_name + (i === 0 ? " (latest)" : "");
-        versionSelect.appendChild(opt);
+      const opt = document.createElement("option");
+      opt.value = rel.tag_name;
+      opt.textContent = rel.tag_name + (i === 0 ? " (latest)" : "");
+      versionSelect.appendChild(opt);
     });
 
+    // Load latest by default
     loadRelease(releases[0]);
-    }
+  }
 
-    async function loadReleaseByTag(tag) {
+  async function loadReleaseByTag(tag) {
     const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`
+      `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`
     );
-    if (!res.ok) throw new Error();
+    if (!res.ok) return;
     loadRelease(await res.json());
-    }
+  }
 
-    function loadRelease(data) {
+  function loadRelease(data) {
+    // Version badge
     versionBadge.textContent = data.tag_name;
 
-    // Downloads
+    // Downloads count
     let total = 0;
     for (const asset of data.assets || []) {
-        total += asset.download_count || 0;
+      total += asset.download_count || 0;
     }
     document.getElementById("downloads").innerHTML =
-        `⬇ <span>${total.toLocaleString()}</span> downloads`;
+      `⬇ <span>${total.toLocaleString()}</span> downloads`;
 
-    // Update download link (stable OR versioned if you want later)
-    document.querySelector(".download").href =
-        `https://github.com/${OWNER}/${REPO}/releases/${data.tag_name}/download/ToDoNotify_linux_amd64.deb`;
+    // Versioned filename
+    const version = data.tag_name.replace(/^v/, "");
 
-    // Load changelog
+    // Versioned download URL
+    downloadBtn.href =
+      `https://github.com/${OWNER}/${REPO}/releases/download/${data.tag_name}/ToDoNotify_${version}_linux_amd64.deb`;
+
+    // Force correct filename on download
+    downloadBtn.setAttribute(
+      "download",
+      `ToDoNotify_${version}_linux_amd64.deb`
+    );
+
+    // Load per-version changelog
     loadChangelogFromBody(data.body || "");
-    }
+  }
 
-    function loadChangelogFromBody(body) {
-    const box = document.getElementById("changelog");
-
+  function loadChangelogFromBody(body) {
     const match = body.match(/## Changes([\s\S]*?)(\n##|\n$)/);
     if (!match) {
-        box.textContent = "No changelog available.";
-        return;
+      changelogBox.textContent = "No changelog available.";
+      return;
     }
 
     const lines = match[1]
-        .split("\n")
-        .map(l => l.trim())
-        .filter(l => l.startsWith("-"));
+      .split("\n")
+      .map(l => l.trim())
+      .filter(l => l.startsWith("-"));
 
-    box.innerHTML =
-        "<ul>" +
-        lines.map(l => `<li>${l.replace(/^- /, "")}</li>`).join("") +
-        "</ul>";
+    if (!lines.length) {
+      changelogBox.textContent = "No changelog available.";
+      return;
     }
 
-    versionSelect.onchange = () =>
+    changelogBox.innerHTML =
+      "<ul>" +
+      lines.map(l => `<li>${l.replace(/^- /, "")}</li>`).join("") +
+      "</ul>";
+  }
+
+  versionSelect.onchange = () =>
     loadReleaseByTag(versionSelect.value);
 
-    loadReleases();
+  document.getElementById("toggleChangelog").onclick = () =>
+    changelogBox.classList.toggle("open");
 
+  loadReleases();
 
-    // ---------- CHANGELOG ----------
-    async function loadChangelog() {
-    const box = document.getElementById("changelog");
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    try {
-        const res = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`
-        );
-        if (!res.ok) throw new Error();
-
-        const data = await res.json();
-        const body = data.body || "";
-
-        // Extract "## Changes" section only
-        const match = body.match(/## Changes([\s\S]*?)(\n##|\n$)/);
-        if (!match) {
-        box.textContent = "No changelog available.";
-        return;
-        }
-
-        const lines = match[1]
-        .split("\n")
-        .map(l => l.trim())
-        .filter(l => l.startsWith("-"));
-
-        if (!lines.length) {
-        box.textContent = "No changelog available.";
-        return;
-        }
-
-        box.innerHTML =
-        "<ul>" +
-        lines.map(l => `<li>${l.replace(/^- /, "")}</li>`).join("") +
-        "</ul>";
-    } catch {
-        box.textContent = "Unable to load changelog.";
-    }
-    }   
-    document.getElementById("toggleChangelog").onclick = () => {
-      const content = document.getElementById("changelog");
-      content.classList.toggle("open");
-    };
-    loadChangelog();
-
-  </script>
+</script>
 </body>
 </html>
