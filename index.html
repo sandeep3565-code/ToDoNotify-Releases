@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>To-Do Notify – Linux</title>
@@ -34,9 +35,9 @@
       margin: 0;
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
+        "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
       background: radial-gradient(circle at top, var(--bg), #00000000),
-                  var(--bg);
+        var(--bg);
       color: var(--text);
       display: flex;
       align-items: center;
@@ -52,8 +53,8 @@
       max-width: 480px;
       width: 100%;
       box-shadow:
-        0 30px 60px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.03);
+        0 30px 60px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       position: relative;
       transition: background 0.3s ease, border 0.3s ease;
@@ -106,13 +107,13 @@
       font-size: 18px;
       font-weight: 700;
       text-align: center;
-      box-shadow: 0 12px 25px rgba(37,99,235,0.35);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 35px rgba(37,99,235,0.45);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.45);
     }
 
     .stats {
@@ -145,168 +146,166 @@
     .footer a:hover {
       text-decoration: underline;
     }
+
     .changelog {
-    margin-top: 18px;
-    text-align: left;
+      margin-top: 18px;
+      text-align: left;
     }
 
     .changelog-toggle {
-    background: none;
-    border: none;
-    color: var(--primary);
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    font-size: 14.5px;
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      font-size: 14.5px;
     }
 
     .changelog-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, opacity 0.25s ease;
-    opacity: 0;
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.25s ease;
+      opacity: 0;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     .changelog-content.open {
-    max-height: 400px;
-    opacity: 1;
+      max-height: 400px;
+      opacity: 1;
     }
 
     .changelog-content ul {
-    padding-left: 18px;
-    margin: 6px 0 0;
+      padding-left: 18px;
+      margin: 6px 0 0;
     }
 
     .version-select {
-    margin-top: 12px;
-    font-size: 14px;
-    color: var(--muted);
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--muted);
     }
 
     .version-select select {
-    margin-left: 6px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
+      margin-left: 6px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
     }
 
     .feedback-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
     }
 
     .feedback-modal.open {
-    display: flex;
+      display: flex;
     }
 
     .feedback-box {
-    background: var(--card);
-    color: var(--text);
-    width: 100%;
-    max-width: 420px;
-    border-radius: 16px;
-    padding: 22px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      background: var(--card);
+      color: var(--text);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
     }
 
     .feedback-box h3 {
-    margin: 0 0 14px;
+      margin: 0 0 14px;
     }
 
     .feedback-box label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 10px;
+      display: block;
+      font-size: 13px;
+      margin-bottom: 10px;
     }
 
     .feedback-box input,
     .feedback-box textarea {
-    width: 100%;
-    margin-top: 4px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    resize: none;
-    overflow-y: auto;
+      width: 100%;
+      margin-top: 4px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      resize: none;
+      overflow-y: auto;
     }
 
     .feedback-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .feedback-actions button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
     }
 
     .feedback-actions button:not(.cancel) {
-    background: var(--primary);
-    color: #fff;
+      background: var(--primary);
+      color: #fff;
     }
 
     .feedback-actions .cancel {
-    background: transparent;
-    border: 1px solid var(--border);
+      background: transparent;
+      border: 1px solid var(--border);
     }
 
     .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #16a34a; /* green */
-    color: white;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 2000;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #16a34a;
+      /* green */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 2000;
     }
 
     .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-6px);
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
     }
-
-
-
-
   </style>
 </head>
 
 <body>
   <div class="card">
     <div class="changelog">
-        <button class="changelog-toggle" id="toggleChangelog">
-            ▼ What’s new
-        </button>
+      <button class="changelog-toggle" id="toggleChangelog">
+        ▼ What’s new
+      </button>
 
-        <div class="changelog-content" id="changelog">
-            Loading changelog…
-        </div>
+      <div class="changelog-content" id="changelog">
+        Loading changelog…
+      </div>
     </div>
 
     <div class="topbar">
@@ -317,8 +316,8 @@
     </div>
 
     <div class="version-select">
-        Version:
-        <select id="versionSelect"></select>
+      Version:
+      <select id="versionSelect"></select>
     </div>
 
 
@@ -329,7 +328,7 @@
     </p>
 
     <a class="download"
-       href="https://github.com/sandeep3565-code/ToDoNotify-Releases/releases/latest/download/ToDoNotify_linux_amd64.deb">
+      href="https://github.com/sandeep3565-code/ToDoNotify-Releases/releases/latest/download/ToDoNotify_linux_amd64.deb">
       ⬇ Download for Linux (.deb)
     </a>
 
@@ -338,165 +337,165 @@
     </div>
 
     <div class="footer">
-    © <span id="year"></span>S Sandeep Kumar. All rights reserved.
-    <a href="#" id="openFeedback">Feedback</a>
+      © <span id="year"></span>S Sandeep Kumar. All rights reserved.
+      <a href="#" id="openFeedback">Feedback</a>
     </div>
   </div>
 
   <!-- Feedback Modal -->
-    <div id="feedbackModal" class="feedback-modal">
+  <div id="feedbackModal" class="feedback-modal">
     <div class="feedback-box">
-        <h3>Send Feedback</h3>
+      <h3>Send Feedback</h3>
 
-        <label>
+      <label>
         Name
         <input type="text" id="fbName" placeholder="Your name" />
-        </label>
+      </label>
 
-        <label>
+      <label>
         Email
         <input type="email" id="fbEmail" placeholder="you@example.com" />
-        </label>
+      </label>
 
-        <label>
+      <label>
         Version
         <input type="text" id="fbVersion" readonly />
-        </label>
+      </label>
 
-        <label>
+      <label>
         Feedback
         <textarea id="fbMessage" rows="4" placeholder="Your feedback…"></textarea>
-        </label>
+      </label>
 
-        <div class="feedback-actions">
+      <div class="feedback-actions">
         <button id="sendFeedback">Submit</button>
         <button class="cancel" id="closeFeedback">Cancel</button>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
-    <div id="toast" class="toast">Thanks for your feedback!</div>
+  <div id="toast" class="toast">Thanks for your feedback!</div>
 
   <script>
-  const OWNER = "sandeep3565-code";
-  const REPO  = "ToDoNotify-Releases";
+    const OWNER = "sandeep3565-code";
+    const REPO = "ToDoNotify-Releases";
 
-  // ---------- THEME ----------
-  const body = document.body;
-  const toggle = document.getElementById("themeToggle");
+    // ---------- THEME ----------
+    const body = document.body;
+    const toggle = document.getElementById("themeToggle");
 
-  function applyTheme(theme) {
-    body.classList.toggle("dark", theme === "dark");
-    toggle.textContent = theme === "dark" ? "☀️" : "🌙";
-    localStorage.setItem("theme", theme);
-  }
-
-  const savedTheme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
-
-  toggle.onclick = () =>
-    applyTheme(body.classList.contains("dark") ? "light" : "dark");
-
-  // ---------- GITHUB DATA ----------
-  const versionSelect = document.getElementById("versionSelect");
-  const versionBadge  = document.getElementById("version");
-  const downloadBtn   = document.querySelector(".download");
-  const changelogBox  = document.getElementById("changelog");
-
-  async function loadReleases() {
-    const res = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/releases`
-    );
-    if (!res.ok) return;
-
-    const releases = await res.json();
-
-    // Populate version dropdown
-    releases.forEach((rel, i) => {
-      if (rel.draft || rel.prerelease) return;
-
-      const opt = document.createElement("option");
-      opt.value = rel.tag_name;
-      opt.textContent = rel.tag_name + (i === 0 ? " (latest)" : "");
-      versionSelect.appendChild(opt);
-    });
-
-    // Load latest by default
-    loadRelease(releases[0]);
-  }
-
-  async function loadReleaseByTag(tag) {
-    const res = await fetch(
-      `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`
-    );
-    if (!res.ok) return;
-    loadRelease(await res.json());
-  }
-
-  function loadRelease(data) {
-    // Version badge
-    versionBadge.textContent = data.tag_name;
-
-    // Downloads count
-    let total = 0;
-    for (const asset of data.assets || []) {
-      total += asset.download_count || 0;
-    }
-    document.getElementById("downloads").innerHTML =
-      `⬇ <span>${total.toLocaleString()}</span> downloads`;
-
-    // Versioned filename
-    const version = data.tag_name.replace(/^v/, "");
-
-    // Versioned download URL
-    downloadBtn.href =
-      `https://github.com/${OWNER}/${REPO}/releases/download/${data.tag_name}/ToDoNotify_${version}_linux_amd64.deb`;
-
-    // Force correct filename on download
-    downloadBtn.setAttribute(
-      "download",
-      `ToDoNotify_${version}_linux_amd64.deb`
-    );
-
-    // Load per-version changelog
-    loadChangelogFromBody(data.body || "");
-
-    document.getElementById("fbVersion").value = data.tag_name;
-  }
-
-  function loadChangelogFromBody(body) {
-    const match = body.match(/## Changes([\s\S]*?)(\n##|\n$)/);
-    if (!match) {
-      changelogBox.textContent = "No changelog available.";
-      return;
+    function applyTheme(theme) {
+      body.classList.toggle("dark", theme === "dark");
+      toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+      localStorage.setItem("theme", theme);
     }
 
-    const lines = match[1]
-      .split("\n")
-      .map(l => l.trim())
-      .filter(l => l.startsWith("-"));
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
 
-    if (!lines.length) {
-      changelogBox.textContent = "No changelog available.";
-      return;
+    toggle.onclick = () =>
+      applyTheme(body.classList.contains("dark") ? "light" : "dark");
+
+    // ---------- GITHUB DATA ----------
+    const versionSelect = document.getElementById("versionSelect");
+    const versionBadge = document.getElementById("version");
+    const downloadBtn = document.querySelector(".download");
+    const changelogBox = document.getElementById("changelog");
+
+    async function loadReleases() {
+      const res = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/releases`
+      );
+      if (!res.ok) return;
+
+      const releases = await res.json();
+
+      // Populate version dropdown
+      releases.forEach((rel, i) => {
+        if (rel.draft || rel.prerelease) return;
+
+        const opt = document.createElement("option");
+        opt.value = rel.tag_name;
+        opt.textContent = rel.tag_name + (i === 0 ? " (latest)" : "");
+        versionSelect.appendChild(opt);
+      });
+
+      // Load latest by default
+      loadRelease(releases[0]);
     }
 
-    changelogBox.innerHTML =
-      "<ul>" +
-      lines.map(l => `<li>${l.replace(/^- /, "")}</li>`).join("") +
-      "</ul>";
-  }
+    async function loadReleaseByTag(tag) {
+      const res = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/releases/tags/${tag}`
+      );
+      if (!res.ok) return;
+      loadRelease(await res.json());
+    }
 
-  versionSelect.onchange = () =>
-    loadReleaseByTag(versionSelect.value);
+    function loadRelease(data) {
+      // Version badge
+      versionBadge.textContent = data.tag_name;
 
-  document.getElementById("toggleChangelog").onclick = () =>
-    changelogBox.classList.toggle("open");
+      // Downloads count
+      let total = 0;
+      for (const asset of data.assets || []) {
+        total += asset.download_count || 0;
+      }
+      document.getElementById("downloads").innerHTML =
+        `⬇ <span>${total.toLocaleString()}</span> downloads`;
 
-  loadReleases();
+      // Versioned filename
+      const version = data.tag_name.replace(/^v/, "");
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+      // Versioned download URL
+      downloadBtn.href =
+        `https://github.com/${OWNER}/${REPO}/releases/download/${data.tag_name}/ToDoNotify_${version}_linux_amd64.deb`;
+
+      // Force correct filename on download
+      downloadBtn.setAttribute(
+        "download",
+        `ToDoNotify_${version}_linux_amd64.deb`
+      );
+
+      // Load per-version changelog
+      loadChangelogFromBody(data.body || "");
+
+      document.getElementById("fbVersion").value = data.tag_name;
+    }
+
+    function loadChangelogFromBody(body) {
+      const match = body.match(/## Changes([\s\S]*?)(\n##|\n$)/);
+      if (!match) {
+        changelogBox.textContent = "No changelog available.";
+        return;
+      }
+
+      const lines = match[1]
+        .split("\n")
+        .map(l => l.trim())
+        .filter(l => l.startsWith("-"));
+
+      if (!lines.length) {
+        changelogBox.textContent = "No changelog available.";
+        return;
+      }
+
+      changelogBox.innerHTML =
+        "<ul>" +
+        lines.map(l => `<li>${l.replace(/^- /, "")}</li>`).join("") +
+        "</ul>";
+    }
+
+    versionSelect.onchange = () =>
+      loadReleaseByTag(versionSelect.value);
+
+    document.getElementById("toggleChangelog").onclick = () =>
+      changelogBox.classList.toggle("open");
+
+    loadReleases();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     // ---------- FEEDBACK ----------
     const modal = document.getElementById("feedbackModal");
@@ -505,70 +504,90 @@
     const sendBtn = document.getElementById("sendFeedback");
 
     openBtn.onclick = (e) => {
-    e.preventDefault();
-    modal.classList.add("open");
+      e.preventDefault();
+      modal.classList.add("open");
     };
 
     closeBtn.onclick = () => modal.classList.remove("open");
 
     sendBtn.onclick = async () => {
-    const payload = {
-        name: fbName.value.trim(),
-        email: fbEmail.value.trim(),
-        version: fbVersion.value,
-        message: fbMessage.value.trim()
-    };
+      const name = fbName.value.trim();
+      const email = fbEmail.value.trim();
+      const message = fbMessage.value.trim();
+      const version = fbVersion.value;
 
-    if (!payload.message) {
-        showToast("Please enter feedback");
+      // ----- VALIDATION -----
+      if (!name) {
+        showToast("Please enter your name");
         return;
-    }
+      }
 
-    // Disable button
-    sendBtn.disabled = true;
-    const originalText = sendBtn.textContent;
-    sendBtn.textContent = "Sending…";
+      if (!email) {
+        showToast("Please enter your email");
+        return;
+      }
 
-    try {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showToast("Please enter a valid email");
+        return;
+      }
+
+      if (!message) {
+        showToast("Please enter your feedback");
+        return;
+      }
+
+      const payload = { name, email, version, message };
+
+      sendBtn.disabled = true;
+      const originalText = sendBtn.textContent;
+      sendBtn.textContent = "Sending…";
+
+      try {
         const res = await fetch(
-        "https://todonotify-feedback.sandeep-3565-kumar.workers.dev",
-        {
+          "https://todonotify-feedback.sandeep-3565-kumar.workers.dev",
+          {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
-        }
+          }
         );
 
         if (res.ok) {
-        showToast("Thanks for your feedback!");
-        modal.classList.remove("open");
-        fbMessage.value = "";
+          showToast("Thanks for your feedback!");
+          modal.classList.remove("open");
+          fbName.value = "";
+          fbEmail.value = "";
+          fbMessage.value = "";
         } else {
-        showToast("Failed to send feedback");
+          showToast("Failed to send feedback");
         }
-    } catch (e) {
+
+      } catch (e) {
         showToast("Network error");
-    } finally {
-        // Restore button
+      } finally {
         sendBtn.disabled = false;
         sendBtn.textContent = originalText;
-    }
+      }
     };
 
 
-    function showToast(message) {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.classList.add("show");
 
-    setTimeout(() => {
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
         toast.classList.remove("show");
-    }, 2500); // auto-dismiss
+      }, 2500); // auto-dismiss
     }
 
 
 
 
-</script>
+  </script>
 </body>
+
 </html>
